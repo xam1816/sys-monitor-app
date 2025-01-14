@@ -19,7 +19,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2  # Настроим Python
       with:
-        python-version: '3.8'  # Укажите нужную версию Python
+        python-version: '3.10'  # Укажите нужную версию Python
 
     - name: Install dependencies
       run: |
@@ -28,4 +28,4 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest  # Запускаем тесты с помощью pytest
+        python -m unittest discover  # Запускаем тесты с помощью unittest
