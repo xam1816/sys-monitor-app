@@ -1,0 +1,31 @@
+name: Python Tests
+
+on:
+  push:
+    branches:
+      - main  # запускать при пуше в ветку main
+  pull_request:
+    branches:
+      - main  # запускать при pull request в ветку main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # используем последнюю версию Ubuntu для запуска тестов
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Получаем код из репозитория
+
+    - name: Set up Python
+      uses: actions/setup-python@v2  # Настроим Python
+      with:
+        python-version: '3.8'  # Укажите нужную версию Python
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt  # Устанавливаем зависимости из requirements.txt
+
+    - name: Run tests
+      run: |
+        pytest  # Запускаем тесты с помощью pytest
