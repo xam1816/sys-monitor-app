@@ -30,15 +30,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y xvfb
 
-      - name: Start Xvfb virtual display
+      - name: Run tests with Xvfb
         run: |
-          nohup Xvfb :99 &
-          export DISPLAY=:99
+          Xvfb :99 &  # Запуск Xvfb
+          export DISPLAY=:99  # Установка переменной DISPLAY
           ps aux | grep Xvfb  # Проверка, что Xvfb работает
-
-      - name: Check DISPLAY environment variable
-        run: |
-          echo "DISPLAY is set to: $DISPLAY"  # Проверка значения переменной DISPLAY
-
-      - name: Run tests
-        run: python -m unittest discover -s tests -p "test_*.py"
+          python -m unittest discover -s tests -p "test_*.py"
