@@ -26,7 +26,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Install Xvfb and other dependencies
-        run: sudo apt-get install -y xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
 
       - name: Start Xvfb virtual display
         run: |
@@ -34,8 +36,9 @@ jobs:
           export DISPLAY=:99
           ps aux | grep Xvfb  # Проверка, что Xvfb работает
 
-      - name: Verify DISPLAY environment variable
-        run: echo $DISPLAY  # Проверка значения DISPLAY
+      - name: Check DISPLAY environment variable
+        run: |
+          echo "DISPLAY is set to: $DISPLAY"  # Проверка значения переменной DISPLAY
 
       - name: Run tests
         run: python -m unittest discover -s tests -p "test_*.py"
