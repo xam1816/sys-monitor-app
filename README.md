@@ -16,3 +16,9 @@ A simple system resource monitoring app with real-time CPU, RAM, and Disk usage 
 1. Клонируйте репозиторий:
    ```bash
    git clone https://github.com/xam1816/sys-monitor-app.git
+
+### Скриншот 1
+![screen 1](images/screen_1.png)
+
+### Скриншот 2
+![screen 2](images/screen_2.png)
